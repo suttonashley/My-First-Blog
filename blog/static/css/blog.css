@@ -1,8 +1,10 @@
-.apple {
-  color: green;
-}
+
 
 
 body {
   padding-left: 15px;
+}
+
+h1 a{
+  font-family: Lobster;
 }
