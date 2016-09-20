@@ -14,7 +14,14 @@
   </div>
   <div>
     <p> Hi there! Welcome to my blog, so happy to have you.</p>
-  </div>
+  </div><br>
 
+  {% for post in posts %}
+    <div>
+        <p> published: {{ post.published_date }}</p>
+        <h1><a href= "">{{ post.title }}</a></h1>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+  {% endfor %}
 
   {% endblock %}
