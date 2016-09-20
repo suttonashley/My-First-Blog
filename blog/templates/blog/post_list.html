@@ -5,6 +5,7 @@
 {% block content %}
 <head>
    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+   <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
 </head>
 
 
@@ -18,9 +19,11 @@
 
   {% for post in posts %}
     <div>
-        <p> published: {{ post.published_date }}</p>
-        <h1><a href= "">{{ post.title }}</a></h1>
-        <p>{{ post.text|linebreaksbr }}</p>
+          <p> published: {{ post.published_date }}</p>
+          <h1><a href= "">{{ post.title }}</a></h1>
+          <p>{{ post.text|linebreaksbr }}</p>
+          <br>
+        <hr>
     </div>
   {% endfor %}
 
