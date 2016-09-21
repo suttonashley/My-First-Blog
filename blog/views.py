@@ -1,4 +1,6 @@
 from django.shortcuts import render
+
+from django.shortcuts import render, get_object_or_404
 #importing timezone because we are using it in our 'posts' QuerySet.
 from django.utils import timezone
 # Here we are importing the models we want to include in out template into our views.py
@@ -11,3 +13,5 @@ from .models import Post
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
+
+def post_details(request, pk):
