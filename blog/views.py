@@ -4,7 +4,8 @@ from django.utils import timezone
 # Here we are importing the models we want to include in out template into our views.py
 from .models import Post
 
-from .views import PostForm
+from .forms import PostForm
+
 
 
 # Create your views here.
@@ -18,6 +19,6 @@ def post_details(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_details.html', {'post' : post})
 
-def post_view(request):
+def post_new(request):
     form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
