@@ -6,6 +6,8 @@ from .models import Post
 
 from .forms import PostForm
 
+from django.shortcuts import redirect
+
 
 
 # Create your views here.
@@ -21,4 +23,13 @@ def post_details(request, pk):
 
 def post_new(request):
     form = PostForm()
-    return render(request, 'blog/post_edit.html', {'form': form})
+    return render(request.POST, 'blog/post_edit.html', {'form': form})
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+    else:
+        form = PostForm()
