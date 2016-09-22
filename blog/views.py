@@ -35,15 +35,15 @@ def post_new(request):
     return render(request, 'blog/post_edit.html', {'form': form})
 
 def post_edit(request, pk):
-    post = get_object_or_404(Post, pk=pk)
+    post = get_object_or_404(Post, pk=pk) # diff b/w this and post_new is that this includes an extra pk.
     if request.method == "POST":
-        form = PostForm(request.POST, instance=post)
+        form = PostForm(request.POST, instance=post) # diff b/w this and post_new is that this includes an instance.
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('post_detail', pk=post.pk)
+            return redirect('post_detail', pk=post.pk) # diff b/w this and post_new is that this includes an extra pk.
     else:
-        form = PostForm(instance=post)
-    return render(request, 'blog/post_edit.html', {'form': form})    
+        form = PostForm(instance=post) # diff b/w this and post_new is that this includes an instance. 
+    return render(request, 'blog/post_edit.html', {'form': form})
